@@ -5,6 +5,17 @@ class FoodBox extends Component{
 
   constructor(props){
     super(props);
+    this.state = {
+      cuantos: 1,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event){    
+    console.log(event.target.value);    
+    this.setState({
+      cuantos: event.target.value,
+    })
   }
 
   render(){
@@ -27,16 +38,10 @@ class FoodBox extends Component{
           <div className="media-right">
             <div className="field has-addons">
               <div className="control">
-                <input
-                  className="input"
-                  type="number"
-                  value="1"
-                />
+                <input className="input is-primary" type="number" onChange={this.handleChange}/>
               </div>
               <div className="control">
-                <button className="button is-info">
-                  + {this.props.index}
-                </button>
+                <button className="button is-info" onClick={() => this.props.accion(this.props.index, this.props.calories, this.state.cuantos)}> + </button>
               </div>
             </div>
           </div>
